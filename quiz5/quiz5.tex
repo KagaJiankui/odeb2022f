@@ -1,0 +1,165 @@
+\documentclass[utf8]{ctexart}
+\usepackage{geometry,amsmath,amssymb,theorem,caption,extarrows,mathrsfs,physics,bm}
+\usepackage{graphicx,xcolor,listings,geometry,booktabs,subfigure,tikz}
+\usepackage{pgfplots,grffile}
+\pgfplotsset{compat=newest}
+  %% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+\usepgfplotslibrary{patchplots}
+\usepackage{xeCJK,fontspec}
+\setCJKmainfont[BoldFont=LXGW WenKai Bold]{LXGW WenKai Mono}
+\setCJKsansfont{黑体}
+  \XeTeXlinebreaklocale "zh"
+  \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
+\lstset{
+    basicstyle          =   \sffamily,          % 基本代码风格
+    keywordstyle        =   \bfseries,          % 关键字风格
+    commentstyle        =   \rmfamily\itshape,  % 注释的风格，斜体
+    stringstyle         =   \ttfamily,  % 字符串风格
+    flexiblecolumns,                % 别问为什么，加上这个
+    numbers             =   left,   % 行号的位置在左边
+    showspaces          =   false,  % 是否显示空格，显示了有点乱，所以不现实了
+    numberstyle         =   \zihao{-5}\ttfamily,    % 行号的样式，小五号，tt等宽字体
+    showstringspaces    =   false,
+    captionpos          =   t,      % 这段代码的名字所呈现的位置，t指的是top上面
+    frame               =   tb,   % 显示边框
+}
+
+\lstdefinestyle{Python}{
+    language        =   Python, % 语言选Python
+    basicstyle      =   \zihao{-5}\ttfamily,
+    numberstyle     =   \zihao{-5}\ttfamily,
+    keywordstyle    =   \color{blue},
+    keywordstyle    =   [2] \color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color[HTML]{338AAF}\ttfamily,
+    breaklines      =   true,   % 自动换行，建议不要写太长的行
+    columns         =   fixed,  % 如果不加这一句，字间距就不固定，很丑，必须加
+    basewidth       =   0.5em,
+}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{hlinkblue}{rgb}{0.27,0.52,0.76}
+\lstdefinestyle{mathematica}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color[HTML]{338AAF}\ttfamily,
+    keywordstyle=\zihao{-5}\sffamily\bfseries\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\zihao{-5}\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    basewidth=0.5em,
+    captionpos=b,
+    columns=fixed,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4
+}
+\lstdefinestyle{matlab}{
+    language=matlab,
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color[HTML]{338AAF}\ttfamily,
+    keywordstyle=\zihao{-5}\sffamily\bfseries\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\zihao{-5}\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    basewidth=0.5em,
+    captionpos=b,
+    columns=fixed,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4
+}
+\newcommand{\dif}{\mathop{}\!\mathrm{d}}
+\newcommand{\const}{\mathop{}\!\mathrm{const.}}
+\newcommand{\splitline}{\noindent\rule[0.25\baselineskip]{\textwidth}{0.5pt}}
+\newcommand{\autographinsert}[2]{\includegraphics[
+  height=\dimexpr\pagegoal-\pagetotal-4\baselineskip\relax,width=#1\textwidth,
+  keepaspectratio]{#2}}
+  % NOTE: 插入图片如果出问题飘到下一页,请调整减掉的行数
+\newtheorem{theorem}{定理}
+\geometry{a4paper,left=1.8cm,right=1.8cm,top=1.5cm,bottom=1.5cm}
+\begin{document}
+\title{ODE B Quiz 5}
+\author{仇琨元}
+\date{\today}
+\maketitle
+
+\section{Problem 1}
+
+Use the exponential intrinsic function \(e^{\omega t}\).
+\begin{equation}
+	\begin{aligned}
+		9\ddot{y} +9\dot{y}-4y              & =0                                     \\
+		e^{\omega t}(9\omega^{2}+9\omega-4) & =0                                     \\
+		\Rightarrow \omega_1,\omega_2       & =\left(\frac{1}{3},-\frac{4}{3}\right)
+	\end{aligned}
+	\label{eq1-prob1}
+\end{equation}
+
+Therefore, the general solution of the differential equation is
+\begin{equation}
+	y(t)=A \mathrm{e}^{\frac{t}{3}}+B \mathrm{e}^{-\frac{4}{3}t}
+	\label{eq2-prob1}
+\end{equation}
+
+\section{Problem 2}
+
+Apply the order reduction on the given equation. Take
+\begin{equation}
+	y_2=u(t)y_1 (t)=u(t)t^{-\frac{1}{2}}\sin (t)
+	\label{eq1-prob2}
+\end{equation}
+
+Then the equation can be rearranged into the standard 2nd order form \(\ddot{y}+p(t)\dot{y}+q(t)y=0\):
+
+\begin{equation}
+	\begin{aligned}
+		p(t)                                        & =t^{-1}                                                               \\
+		q(t)                                        & =1-0.25t^{-2}                                                         \\
+		K(t)                                        & =\dot{c}=t^{-\frac{1}{2}}\cos (t)-\frac{1}{2}t^{-\frac{3}{2}}\sin (t) \\
+		\Rightarrow 2K(t)u'(t)+(p(t)K(t)+K'(t))u(t) & =0
+	\end{aligned}
+	\label{eq2-prob2}
+\end{equation}
+
+Solve the equation \ref{eq2-prob2}, the coefficient \(u(t)\) and the another linearly independent specified solution \(y_2(t)=u(t)y_1(t)\) can be obtained:
+\begin{equation}
+	\begin{aligned}
+		u(t)   & =C_1 \exp\left(\frac{\ln (t)-2 \ln (2 t \cos (t)-\sin (t))}{4}\right)                          \\
+		y_2(t) & =C_1 t^{-\frac{1}{2}}\sin (t) \exp\left(\frac{\ln (t)-2 \ln (2 t \cos (t)-\sin (t))}{4}\right)
+	\end{aligned}
+\end{equation}
+
+\section{Problem 3}
+
+Solve the non-homogeneous equation with Laplace transform.
+\begin{equation}
+	\begin{aligned}
+		(1+s^{2})Y(s)    & =\frac{12s}{(4+s^{2})^{2}}+\frac{s}{4+s^{2}} \\
+		                 & =\frac{s}{4+s^{2}} \frac{16+s^{2}}{4+s^{2}}  \\
+		\Rightarrow Y(s) & =\frac{s(16+s^{2})}{(4+s^{2})(1+s^{2})}
+	\end{aligned}
+\end{equation}
+
+Inverse Laplace transform gives out the general solution:
+\begin{equation}
+	y(t)=\sin (t) y'(0)+\cos (t) \left(-2 t \sin (t)+y(0)+\frac{5}{3}\right)-\frac{5}{3}\cos (2 t)
+\end{equation}
+
+\end{document}
