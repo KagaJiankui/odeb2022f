@@ -1,0 +1,1 @@
+{"rule":"MORFOLOGIK_RULE_EN_US","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q 黑体\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q \"zh\" = 0pt plus 1pt minus 0.1pt Dummies\\E$"}
