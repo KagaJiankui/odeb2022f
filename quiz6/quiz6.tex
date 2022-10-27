@@ -155,9 +155,11 @@ Apply the constant variation on the homogeneous basis \(y_1(t)=te^{-2t},y_2(t)=e
 		W(y_1,y_2)           & =\det \left(\begin{bmatrix}
 			                                   y_1(t)       & y_2(t)       \\
 			                                   \dot{y}_1(t) & \dot{y}_2(t) \\
-		                                   \end{bmatrix}\right) \\-y_1(t)\int_{0}^{t}\frac{y_2(s)g(s)}{W(y_1,y_2)(s)}\dif s & =
-		                     & =e^{-4t}
-		\Rightarrow y_{p}(t) & =C_1 e^{-2 t} \ln (t)+C_2 e^{-2 t}
+		                                   \end{bmatrix}\right)                                                          \\
+		                     & =e^{-4t}                                                                                                            \\
+		\Rightarrow y_{p}(t) & =-y_1(t)\int_{0}^{t}\frac{y_2(s)g(s)}{W(y_1,y_2)(s)}\dif s+y_2(t)\int_{0}^{t}\frac{y_1(s)g(s)}{W(y_1,y_2)(s)}\dif s \\
+		                     & =C_1e^{-2t}\int \frac{\dif s}{s}+C_2e^{-2 t}                                                                        \\
+		                     & =C_1 e^{-2 t} \ln (t)+C_2 e^{-2 t}
 	\end{aligned}
 \end{equation}
 
